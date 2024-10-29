@@ -5,31 +5,19 @@ y buscar dentro del array para ver si hay una habitación con el mismo ID. Si ha
 
 <?php
 include __DIR__ . '/utils/json.php';
+include __DIR__ . '/utils/path.php';
 
-$roomFound = null;
+$room = null;
 
 $rooms = load_rooms();
 
-const ID_PARAM = 'id';
+$id = intval(get_param_id());
 
-if (isset($_GET[ID_PARAM])) {
-    $requestedId = intval($_GET[ID_PARAM]);
-    
-    foreach ($rooms as $room) {
-        if ($room['id'] === $requestedId) {
-            $roomFound = $room;
-            break;
-        }
+foreach ($rooms as $roomData) {
+    if ($roomData['id'] === $id) {
+        $room = $roomData;
+        break;
     }
 }
 
-if ($roomFound) {
-    echo "<h2>Habitación Encontrada:</h2>";
-    echo "<p><strong>Nombre:</strong> " . $roomFound['roomType'] . "</p>";
-    echo "<p><strong>Número:</strong> " . $roomFound['number'] . "</p>";
-    echo "<p><strong>Precio:</strong> " . $roomFound['rate'] . "</p>";
-    echo "<p><strong>Descuento:</strong> " . $roomFound['discount'] . "%</p>";
-} else {
-    echo "<p>No se encontró ninguna habitación con ese ID.</p>";
-}
-?>
+include __DIR__ . '/views/room_template.php';

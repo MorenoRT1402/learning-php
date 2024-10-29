@@ -12,6 +12,6 @@ if ($rooms === null) {
     die('Error al decodificar el JSON');
 }
 
-include __DIR__ . '/views/room-view.php';
+include __DIR__ . '/views/rooms_template.php';
 
 ?>

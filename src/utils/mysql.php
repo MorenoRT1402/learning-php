@@ -1,7 +1,8 @@
 <?php
 $config = require __DIR__ . '/../../config.php';
 
-function db_connection($config) {
+function db_connection() {
+    global $config;
     $host = $config['db_host'];
     $user = $config['db_user'];
     $password = $config['db_pass'];
@@ -17,8 +18,7 @@ function db_connection($config) {
 }
 
 function load_rooms() {
-    global $config;
-    $conn = db_connection($config);
+    $conn = db_connection();
 
     $query = "SELECT id, roomType, rate, discount FROM rooms"; 
     $result = $conn->query($query);
@@ -36,4 +36,30 @@ function load_rooms() {
 
     return $rooms;
 }
+
+function load_room(int $id) {
+    $conn = db_connection();
+
+    $stmt = $conn->prepare("SELECT id, roomType, number, rate, discount FROM rooms WHERE id = ?");
+    
+    // Link param
+    $stmt->bind_param("i", $id); // "i" indicates that the type is an integer
+
+    $stmt->execute();
+    
+    $result = $stmt->get_result();
+
+    // Check if any room was found
+    if ($result->num_rows === 0) {
+        return null;
+    }
+
+    $room = $result->fetch_assoc();
+
+    $stmt->close();
+    $conn->close();
+
+    return $room;
+}
+
 ?>

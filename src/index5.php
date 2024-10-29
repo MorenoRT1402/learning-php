@@ -7,4 +7,4 @@ include __DIR__ . '/utils/mysql.php';
 
 $rooms = load_rooms();
 
-include_once __DIR__ . '/views/room-view.php';
+include_once __DIR__ . '/views/rooms_template.php';
