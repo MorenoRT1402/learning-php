@@ -83,4 +83,20 @@ function load_room(int $id) {
     return $room;
 }
 
+function create_room($roomType, $number, $rate, $discount) {
+    $conn = db_connection();
+
+    $stmt = $conn->prepare("INSERT INTO rooms (roomType, number, rate, discount) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("sidi", $roomType, $number, $rate, $discount);
+
+    if ($stmt->execute()) {
+        $newRoomId = $stmt->insert_id; // Get the ID of the new room
+        $stmt->close();
+        $conn->close();
+        return $newRoomId;
+    } else {
+        die("Error al crear la habitación: " . $stmt->error);
+    }
+}
+
 ?>
