@@ -1,12 +1,12 @@
+<!--
+Utilizar el mismo código para importar el archivo JSON pero esta vez pon una etiqueta <ol></ol> y mostrar cada habitación como un <li></li> utilizando un bucle de PHP. 
+Mostrar las propiedades Name, Number, Price y Discount
+-->
+
 <?php
-$jsonFilePath = 'rooms.json'; 
-$jsonData = file_get_contents($jsonFilePath);
+include __DIR__ . '/utils.php';
 
-if ($jsonData === false) {
-    die('Error al leer el archivo JSON');
-}
-
-$rooms = json_decode($jsonData, true);
+$rooms = loadRooms();
 
 if ($rooms === null) {
     die('Error al decodificar el JSON');
@@ -27,7 +27,7 @@ if ($rooms === null) {
             <li>
                 <strong>Name:</strong> <?php echo htmlspecialchars($room['roomType']); ?><br>
                 <strong>Number:</strong> <?php echo htmlspecialchars($room['number']); ?><br>
-                <strong>Price:</strong> $<?php echo htmlspecialchars($room['rate']); ?><br>
+                <strong>Price:</strong> <?php echo htmlspecialchars($room['rate']); ?><br>
                 <strong>Discount:</strong> <?php echo htmlspecialchars($room['discount']); ?>%
             </li>
         <?php endforeach; ?>

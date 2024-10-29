@@ -1,14 +1,19 @@
-<?php
-$jsonFile = 'rooms.json';
-$jsonData = file_get_contents($jsonFile);
+<!-- 
+Copiar el archivo JSON de las habitaciones ficticios al proyecto (rooms.json), importar el archivo en index2.php 
+y muestra el contenido dentro de una etiqueta <pre></pre> 
+-->
 
-if (file_exists($jsonFile)) {
-    $rooms = json_decode($jsonData, true);
+<?php
+include __DIR__ . '/utils.php';
+
+try {
+    $rooms = loadRooms();
 
     echo '<pre>';
     print_r($rooms);
     echo '</pre>';
-} else {
-    echo "El archivo JSON no existe.";
+
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 ?>

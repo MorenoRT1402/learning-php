@@ -1,25 +1,26 @@
+<!--
+Acceder la página con un query param (localhost:8000/index4.php?id=1). Leer el parámetro de GET, importar las habitaciones JSON, 
+y buscar dentro del array para ver si hay una habitación con el mismo ID. Si hay una, mostrarla con las propiedades Name, Number, Price y Discount
+-->
+
 <?php
-$jsonFile = 'rooms.json';
+include __DIR__ . '/utils.php';
 
 $roomFound = null;
 
-if (file_exists($jsonFile)) {
-    $jsonData = file_get_contents($jsonFile);
-    
-    $rooms = json_decode($jsonData, true);
+$rooms = loadRooms();
 
-    if (isset($_GET['id'])) {
-        $requestedId = intval($_GET['id']);
-        
-        foreach ($rooms as $room) {
-            if ($room['id'] === $requestedId) {
-                $roomFound = $room;
-                break;
-            }
+const ID_PARAM = 'id';
+
+if (isset($_GET[ID_PARAM])) {
+    $requestedId = intval($_GET[ID_PARAM]);
+    
+    foreach ($rooms as $room) {
+        if ($room['id'] === $requestedId) {
+            $roomFound = $room;
+            break;
         }
     }
-} else {
-    echo "El archivo JSON no existe.";
 }
 
 if ($roomFound) {
