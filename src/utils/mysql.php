@@ -37,6 +37,27 @@ function load_rooms() {
     return $rooms;
 }
 
+function load_rooms_by_type($searchTerm) {
+    $conn = db_connection();
+    
+    $searchTerm = $conn->real_escape_string($searchTerm);
+    $query = "SELECT id, roomType, rate, discount FROM rooms WHERE roomType LIKE '%$searchTerm%'"; 
+    $result = $conn->query($query);
+    
+    if (!$result) {
+        die("Error en la consulta: " . $conn->error);
+    }
+
+    $rooms = [];
+    while ($row = $result->fetch_assoc()) {
+        $rooms[] = $row;
+    }
+
+    $conn->close();
+
+    return $rooms;
+}
+
 function load_room(int $id) {
     $conn = db_connection();
 

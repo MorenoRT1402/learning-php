@@ -18,6 +18,7 @@
                     <strong>Price:</strong> <?php echo htmlspecialchars($room['rate']); ?><br>
                     <strong>Discount:</strong> <?php echo htmlspecialchars($room['discount']); ?>%
                 </li>
+                <br>
             <?php endforeach; ?>
         <?php endif; ?>
     </ol>

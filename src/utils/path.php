@@ -1,7 +1,8 @@
 <?php
 function get_param_id() {
-    if (isset($_GET['id'])) {
-        return $_GET['id'];
+    $id = $_GET['id'];
+    if (isset($id)) {
+        return $id;
     } else {
         echo "ID no válido.";
     }
