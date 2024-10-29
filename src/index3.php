@@ -25,10 +25,10 @@ if ($rooms === null) {
     <ol>
         <?php foreach ($rooms as $room): ?>
             <li>
-                <strong>Name:</strong> <?php echo htmlspecialchars($room['room_type']); ?><br>
-                <strong>Number:</strong> <?php echo htmlspecialchars($room['room_number']); ?><br>
-                <strong>Price:</strong> $<?php echo htmlspecialchars($room['room_price']); ?><br>
-                <strong>Discount:</strong> <?php echo htmlspecialchars($room['room_discount']); ?>%
+                <strong>Name:</strong> <?php echo htmlspecialchars($room['roomType']); ?><br>
+                <strong>Number:</strong> <?php echo htmlspecialchars($room['number']); ?><br>
+                <strong>Price:</strong> $<?php echo htmlspecialchars($room['rate']); ?><br>
+                <strong>Discount:</strong> <?php echo htmlspecialchars($room['discount']); ?>%
             </li>
         <?php endforeach; ?>
     </ol>
