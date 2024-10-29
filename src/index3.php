@@ -4,33 +4,14 @@ Mostrar las propiedades Name, Number, Price y Discount
 -->
 
 <?php
-include __DIR__ . '/utils.php';
+include __DIR__ . '/utils/json.php';
 
-$rooms = loadRooms();
+$rooms = load_rooms();
 
 if ($rooms === null) {
     die('Error al decodificar el JSON');
 }
-?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooms</title>
-</head>
-<body>
-    <h1>Lista de Habitaciones</h1>
-    <ol>
-        <?php foreach ($rooms as $room): ?>
-            <li>
-                <strong>Name:</strong> <?php echo htmlspecialchars($room['roomType']); ?><br>
-                <strong>Number:</strong> <?php echo htmlspecialchars($room['number']); ?><br>
-                <strong>Price:</strong> <?php echo htmlspecialchars($room['rate']); ?><br>
-                <strong>Discount:</strong> <?php echo htmlspecialchars($room['discount']); ?>%
-            </li>
-        <?php endforeach; ?>
-    </ol>
-</body>
-</html>
+include __DIR__ . '/views/room-view.php';
+
+?>

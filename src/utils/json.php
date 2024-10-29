@@ -1,5 +1,5 @@
 <?php
-function loadJson($filePath) {
+function load_json($filePath) {
     if (file_exists($filePath)) {
         $jsonData = file_get_contents($filePath);
         
@@ -9,7 +9,7 @@ function loadJson($filePath) {
     }
 }
 
-function loadRooms() {
-    return loadJson(__DIR__ . '/data/rooms.json');
+function load_rooms() {
+    return load_json(__DIR__ . '/../data/rooms.json');
 }
 ?>

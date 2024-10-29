@@ -4,11 +4,11 @@ y buscar dentro del array para ver si hay una habitación con el mismo ID. Si ha
 -->
 
 <?php
-include __DIR__ . '/utils.php';
+include __DIR__ . '/utils/json.php';
 
 $roomFound = null;
 
-$rooms = loadRooms();
+$rooms = load_rooms();
 
 const ID_PARAM = 'id';
 
