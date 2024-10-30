@@ -20,6 +20,7 @@ Utilizar un if para ver si has buscado y hacer una consulta diferente para obten
         $rooms = load_rooms();
     }
 
-    include_once __DIR__ . '/views/rooms_template.php';
+    $blade = include_once __DIR__ . '/config/setup.php';
+    echo $blade->run("rooms", ["rooms" => $rooms]);
 ?>
 

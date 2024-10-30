@@ -7,4 +7,5 @@ include __DIR__ . '/utils/mysql.php';
 
 $rooms = load_rooms();
 
-include_once __DIR__ . '/views/rooms_template.php';
+$blade = include_once __DIR__ . '/config/setup.php';
+echo $blade->run("rooms", ["rooms" => $rooms]);

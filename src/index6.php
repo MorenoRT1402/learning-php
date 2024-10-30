@@ -10,5 +10,6 @@ include __DIR__ . '/utils/path.php';
 $id = (int)get_param_id();
 $room = load_room($id);
 
-include __DIR__ . '/views/room_template.php';
+$blade = include __DIR__ . '/config/setup.php';
+echo $blade->run("room_details", ["room" => $room, "id" => $id]);
 

@@ -12,6 +12,7 @@ if ($rooms === null) {
     die('Error al decodificar el JSON');
 }
 
-include __DIR__ . '/views/rooms_template.php';
+$blade = include_once __DIR__ . '/config/setup.php';
+echo $blade->run("rooms", ["rooms" => $rooms]);
 
 ?>

@@ -15,9 +15,9 @@ $id = intval(get_param_id());
 
 foreach ($rooms as $roomData) {
     if ($roomData['id'] === $id) {
-        $room = $roomData;
         break;
     }
 }
 
-include __DIR__ . '/views/room_template.php';
+$blade = include __DIR__ . '/config/setup.php';
+echo $blade->run("room_details", ["room" => $roomData, "id" => $id]);

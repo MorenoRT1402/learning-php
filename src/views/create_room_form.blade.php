@@ -1,12 +1,12 @@
 <form method="POST">
     <label for="roomType">Tipo de habitación:</label>
     <select id="roomType" name="roomType" required>
-        <?php foreach (ROOM_TYPES as $type): ?>
-            <option value="<?php echo htmlspecialchars($type); ?>"><?php echo htmlspecialchars($type); ?></option>
-        <?php endforeach; ?>
+        @foreach ($room_types as $type)
+            <option value="{{ htmlspecialchars($type) }}">{{ htmlspecialchars($type) }}</option>
+        @endforeach
     </select>
 
-    <label for="number"></label>
+    <label for="number">Número:</label>
     <input type="number" id="number" name="number" min="1" value="1" required><br>
 
     <label for="rate">Tarifa:</label>
