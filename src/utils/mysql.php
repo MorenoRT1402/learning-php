@@ -1,8 +1,7 @@
 <?php
-$config = require __DIR__ . '/../config/config.php';
 
 function db_connection() {
-    global $config;
+    $config = require __DIR__ . '/../config/config.php';
     $host = $config['db_host'];
     $user = $config['db_user'];
     $password = $config['db_pass'];
@@ -17,7 +16,7 @@ function db_connection() {
     return $conn;
 }
 
-function load_rooms() {
+function db_load_rooms() {
     $conn = db_connection();
 
     $query = "SELECT id, roomType, rate, discount FROM rooms"; 

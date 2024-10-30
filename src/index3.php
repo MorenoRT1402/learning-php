@@ -4,9 +4,9 @@ Mostrar las propiedades Name, Number, Price y Discount
 -->
 
 <?php
-include __DIR__ . '/utils/json.php';
+include __DIR__ . '/dto/room.php';
 
-$rooms = load_rooms();
+$rooms = Room::fetchRoomsFromJSON();
 
 if ($rooms === null) {
     die('Error al decodificar el JSON');

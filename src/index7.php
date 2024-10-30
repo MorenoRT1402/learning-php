@@ -10,14 +10,14 @@ Utilizar un if para ver si has buscado y hacer una consulta diferente para obten
 </form>
 
 <?php
-    include_once __DIR__ . '/utils/mysql.php';
 
     $searchTerm = htmlspecialchars($_GET['search']);
+    include_once __DIR__ . '/dto/room.php';
     if (isset($searchTerm) && !empty($searchTerm)){
-        $rooms = load_rooms_by_type($searchTerm);
+        $rooms = Room::fetchRoomsByTypeFromDB($searchTerm);
     }
     else{
-        $rooms = load_rooms();
+        $rooms = Room::fetchRoomsFromDB();
     }
 
     $blade = include_once __DIR__ . '/config/setup.php';

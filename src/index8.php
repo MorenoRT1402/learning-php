@@ -4,19 +4,14 @@ Si accedes a la página con una peticion POST, mostrar la habitación nueva con 
 -->
 
 <?php
-include_once __DIR__ . '/utils/mysql.php';
+include_once __DIR__ . '/dto/room.php';
 include_once __DIR__ . '/utils/path.php';
 
 $is_post = $_SERVER['REQUEST_METHOD'] === 'POST';
 $newRoom = null;
 
 if ($is_post) {
-    $newRoom = [
-        'roomType' => htmlspecialchars($_POST['roomType']),
-        'number' => (int)$_POST['number'],
-        'rate' => (float)$_POST['rate'],
-        'discount' => (int)$_POST['discount']
-    ];
+    $newRoom = new Room(null, $_POST['roomType'], (int)$_POST['number'], (float)$_POST['rate'], (int)$_POST['discount']);
 }
 
 $blade = include __DIR__ . '/config/setup.php';

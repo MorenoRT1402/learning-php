@@ -4,10 +4,10 @@ y muestra el contenido dentro de una etiqueta <pre></pre>
 -->
 
 <?php
-include __DIR__ . '/utils/json.php';
+include __DIR__ . '/dto/room.php';
 
 try {
-    $rooms = load_rooms();
+    $rooms = Room::fetchRoomsFromJSON();
 
     echo '<pre>';
     print_r($rooms);

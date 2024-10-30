@@ -9,7 +9,7 @@ function load_json($filePath) {
     }
 }
 
-function load_rooms() {
+function json_load_rooms() {
     return load_json(__DIR__ . '/../data/rooms.json');
 }
 ?>

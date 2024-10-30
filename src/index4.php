@@ -4,17 +4,17 @@ y buscar dentro del array para ver si hay una habitación con el mismo ID. Si ha
 -->
 
 <?php
-include __DIR__ . '/utils/json.php';
+include __DIR__ . '/dto/room.php';
 include __DIR__ . '/utils/path.php';
 
 $room = null;
 
-$rooms = load_rooms();
+$rooms = Room::fetchRoomsFromJSON();
 
 $id = intval(get_param_id());
 
 foreach ($rooms as $roomData) {
-    if ($roomData['id'] === $id) {
+    if ($roomData->get_id() === $id) {
         break;
     }
 }

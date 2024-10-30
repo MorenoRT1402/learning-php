@@ -12,11 +12,12 @@
         <ul>
             @foreach ($rooms as $room)
                 <li>
-                    <strong>Nombre:</strong> {{ $room['roomType'] }}<br>
-                    <strong>Número:</strong> {{ $room['number'] }}<br>
-                    <strong>Tarifa:</strong> ${{ $room['rate'] }}<br>
-                    <strong>Descuento:</strong> {{ $room['discount'] }}%<br>
+                    <strong>Nombre:</strong> {{ $room->get_roomType() }}<br>
+                    <strong>Número:</strong> {{ $room->get_number() }}<br>
+                    <strong>Tarifa:</strong> ${{ number_format($room->get_rate(), 2) }}<br>
+                    <strong>Descuento:</strong> {{ $room->get_discount() }}%<br>
                 </li>
+                <br>
             @endforeach
         </ul>
     @else
